@@ -1,0 +1,290 @@
+{
+    "en": {
+        "hf 16": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 10.06595516204834
+        },
+        "rtn 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 10.31897258758545
+        },
+        "hf 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 10.376224517822266
+        },
+        "awq 4": {
+            "model": "llama_7b_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 10.265392303466797
+        },
+        "gptq 4": {
+            "model": "llama_7b_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 10.217729568481445
+        }
+    },
+    "fr": {
+        "hf 16": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 24.539222717285156
+        },
+        "rtn 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 25.229604721069336
+        },
+        "hf 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 26.150548934936523
+        },
+        "awq 4": {
+            "model": "llama_7b_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 25.00600242614746
+        },
+        "gptq 4": {
+            "model": "llama_7b_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 24.9433650970459
+        }
+    },
+    "ru": {
+        "hf 16": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 34.47531509399414
+        },
+        "rtn 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 37.64479064941406
+        },
+        "hf 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 38.814353942871094
+        },
+        "awq 4": {
+            "model": "llama_7b_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 37.380149841308594
+        },
+        "gptq 4": {
+            "model": "llama_7b_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 37.99970626831055
+        }
+    },
+    "zh": {
+        "hf 16": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 44.328399658203125
+        },
+        "rtn 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 50.7432975769043
+        },
+        "hf 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 51.99921417236328
+        },
+        "awq 4": {
+            "model": "llama_7b_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 47.98508071899414
+        },
+        "gptq 4": {
+            "model": "llama_7b_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 48.737144470214844
+        }
+    },
+    "es": {
+        "hf 16": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 31.6279354095459
+        },
+        "rtn 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 33.0027961730957
+        },
+        "hf 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 34.14957046508789
+        },
+        "awq 4": {
+            "model": "llama_7b_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 32.151268005371094
+        },
+        "gptq 4": {
+            "model": "llama_7b_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 33.203094482421875
+        }
+    },
+    "uk": {
+        "hf 16": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 41.93731689453125
+        },
+        "rtn 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 46.94251251220703
+        },
+        "hf 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 49.1248893737793
+        },
+        "awq 4": {
+            "model": "llama_7b_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 45.96006393432617
+        },
+        "gptq 4": {
+            "model": "llama_7b_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 51.407535552978516
+        }
+    },
+    "vi": {
+        "hf 16": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 44.220062255859375
+        },
+        "rtn 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 54.015235900878906
+        },
+        "hf 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 54.869319915771484
+        },
+        "awq 4": {
+            "model": "llama_7b_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 49.66568374633789
+        },
+        "gptq 4": {
+            "model": "llama_7b_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 54.078338623046875
+        }
+    },
+    "id": {
+        "hf 16": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 36.359222412109375
+        },
+        "rtn 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 40.595848083496094
+        },
+        "hf 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 42.854854583740234
+        },
+        "awq 4": {
+            "model": "llama_7b_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 39.282840728759766
+        },
+        "gptq 4": {
+            "model": "llama_7b_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 40.552547454833984
+        }
+    },
+    "hi": {
+        "hf 16": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 382.5733642578125
+        },
+        "rtn 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 611.5712280273438
+        },
+        "hf 4": {
+            "model": "Llama-2-7b-chat-hf",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 673.9271850585938
+        },
+        "awq 4": {
+            "model": "llama_7b_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 520.8765869140625
+        },
+        "gptq 4": {
+            "model": "llama_7b_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 520.2940063476562
+        }
+    }
+}

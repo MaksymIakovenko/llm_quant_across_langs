@@ -1,0 +1,290 @@
+{
+    "en": {
+        "hf 16": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 14.717195510864258
+        },
+        "hf 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 16.01805305480957
+        },
+        "rtn 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 15.473302841186523
+        },
+        "awq 4": {
+            "model": "Llama-3.2-3B-Instruct_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 15.34912395477295
+        },
+        "gptq 4": {
+            "model": "Llama-3.2-3B-Instruct_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 15.158809661865234
+        }
+    },
+    "fr": {
+        "hf 16": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 7.893171787261963
+        },
+        "hf 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 8.819984436035156
+        },
+        "rtn 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 8.535296440124512
+        },
+        "awq 4": {
+            "model": "Llama-3.2-3B-Instruct_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 8.289217948913574
+        },
+        "gptq 4": {
+            "model": "Llama-3.2-3B-Instruct_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 8.50792407989502
+        }
+    },
+    "ru": {
+        "hf 16": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 11.817278861999512
+        },
+        "hf 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 14.20255184173584
+        },
+        "rtn 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 13.55226993560791
+        },
+        "awq 4": {
+            "model": "Llama-3.2-3B-Instruct_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 13.010197639465332
+        },
+        "gptq 4": {
+            "model": "Llama-3.2-3B-Instruct_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 15.604622840881348
+        }
+    },
+    "uk": {
+        "hf 16": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 19.787778854370117
+        },
+        "hf 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 28.85503387451172
+        },
+        "rtn 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 25.864721298217773
+        },
+        "awq 4": {
+            "model": "Llama-3.2-3B-Instruct_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 23.682209014892578
+        },
+        "gptq 4": {
+            "model": "Llama-3.2-3B-Instruct_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 27.914342880249023
+        }
+    },
+    "es": {
+        "hf 16": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 10.250256538391113
+        },
+        "hf 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 11.343724250793457
+        },
+        "rtn 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 11.034574508666992
+        },
+        "awq 4": {
+            "model": "Llama-3.2-3B-Instruct_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 10.79720401763916
+        },
+        "gptq 4": {
+            "model": "Llama-3.2-3B-Instruct_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 10.970457077026367
+        }
+    },
+    "vi": {
+        "hf 16": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 14.76711654663086
+        },
+        "hf 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 17.018203735351562
+        },
+        "rtn 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 16.503990173339844
+        },
+        "awq 4": {
+            "model": "Llama-3.2-3B-Instruct_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 15.694374084472656
+        },
+        "gptq 4": {
+            "model": "Llama-3.2-3B-Instruct_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 16.360002517700195
+        }
+    },
+    "id": {
+        "hf 16": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 10.205886840820312
+        },
+        "hf 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 11.846111297607422
+        },
+        "rtn 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 11.358049392700195
+        },
+        "awq 4": {
+            "model": "Llama-3.2-3B-Instruct_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 10.89179801940918
+        },
+        "gptq 4": {
+            "model": "Llama-3.2-3B-Instruct_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 11.453653335571289
+        }
+    },
+    "hi": {
+        "hf 16": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 5.532763481140137
+        },
+        "hf 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 6.145785808563232
+        },
+        "rtn 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 5.98348331451416
+        },
+        "awq 4": {
+            "model": "Llama-3.2-3B-Instruct_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 5.810667037963867
+        },
+        "gptq 4": {
+            "model": "Llama-3.2-3B-Instruct_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 6.149626731872559
+        }
+    },
+    "zh": {
+        "hf 16": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 16,
+            "perplexity": 17.98511505126953
+        },
+        "hf 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "hf",
+            "precision": 4,
+            "perplexity": 21.22492218017578
+        },
+        "rtn 4": {
+            "model": "Llama-3.2-3B-Instruct",
+            "method": "rtn",
+            "precision": 4,
+            "perplexity": 20.425067901611328
+        },
+        "awq 4": {
+            "model": "Llama-3.2-3B-Instruct_awq_4bit_128g",
+            "method": "awq",
+            "precision": 4,
+            "perplexity": 19.342432022094727
+        },
+        "gptq 4": {
+            "model": "Llama-3.2-3B-Instruct_gptq_4bit_128g",
+            "method": "gptq",
+            "precision": 4,
+            "perplexity": 20.81456184387207
+        }
+    }
+}
