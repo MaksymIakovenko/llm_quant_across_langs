@@ -17,7 +17,7 @@ This project is organized as follows:
 * The `quantize` folder contains scripts used to quantize the models
 * The `quants` folder is meant to contain the quantized models, which are omitted due to their volume
 
-Note that the results of the FLORES+ evaluation have been put into a password-protected zip archive, the password is the name of this repository, ie `llm_quant_across_langs`. This is a preventive measure to protect generated answers from getting scraped as that would constitute an inderect and noisy leak of the FLORES+.
+Note that the results of the FLORES+ evaluation have been put into a password-protected zip archive, the password is the name of this repository, ie `llm_quant_across_langs`. This is a preventive measure to protect generated answers from getting scraped as that would constitute an inderect and noisy leak of FLORES+.
 
 ## Installation
 
@@ -37,27 +37,33 @@ To quantize the models using the same configuration as in the experiments, simpl
 
 ### Benchmarking
 
-The FLORES+ BLEU evaluation can be performed by running the `generate_flores_translations.py` script from within the `evaluate` folder as follows:
+The FLORES+ BLEU evaluation can be performed by first running the `generate_flores_translations.py` script from within the `evaluate` folder as follows:
 
 ```bash
-python3 generate_flores_translations.py -c CATEGORY -b BATCH_SIZE -n RUN_NAME
+python3 generate_flores_translations.py -c CATEGORY -b BATCH_SIZE -n RUN_NAME -t HUGGINGFACE_TOKEN
 ```
 
-The category parameter refer to the base model used for evaluation, either `BASE` for `LLaMA 2 7B Chat`, `8B` for `LLaMA 3.1 8B Instruct` or `3B` for `LLaMA 3.2 3B Instruct`
+The category parameter refer to the base model used for evaluation, either `7B` for `LLaMA 2 7B Chat`, `8B` for `LLaMA 3.1 8B Instruct` or `3B` for `LLaMA 3.2 3B Instruct`
 
-Please download the `v2.0-rc.3` version of the benchmark dataset from the [FLORES+ Github Repository](https://github.com/openlanguagedata/flores). The code assumes that the relevant benchmarks are situated in a `../../Eval/` folder on the same level as the this project's root folder.
+Considering the updated mode of distribution of the FLORES+ dataset, you'll need to specify a valid huggingface token after agree to the terms on the [FLORES+ Huggingface Hub page](https://huggingface.co/datasets/openlanguagedata/flores_plus)  in order for the dataset to be downloaded.
+
+Once the translations have been generated, they can be evaluated using either BLEU or COMET metric like follows, the results for each model will be stored in an appropriate subfolder of ´./eval_results/flores/´:
+
+```bash
+python3 eval_bleu.py -t HUGGINGFACE_TOKEN
+
+python3 eval_comet.py -t HUGGINGFACE_TOKEN
+```
 
 The perplexity evaluation is done through the `perplexity.py` and `perplexity_normalized.py` scripts from within the `evaluate` folder, for regular sliding window perplexity and the language-adjusted approach respectively:
 
 ```bash
-python3 perplexity.py -c CATEGORY -n RUN_NAME
+python3 perplexity.py -c CATEGORY -n RUN_NAME -t HUGGINGFACE_TOKEN
 ```
 
 ```bash
-python3 perplexity_normalized.py -c CATEGORY -n RUN_NAME
+python3 perplexity_normalized.py -c CATEGORY -n RUN_NAME -t HUGGINGFACE_TOKEN
 ```
-
-Much like with the BLEU evaluation on FLORES, these perplexity evaluation scripts require you to have the FLORES+ dataset downloaded and placed in the specified directory.
 
 ### Other Relevant Files
 

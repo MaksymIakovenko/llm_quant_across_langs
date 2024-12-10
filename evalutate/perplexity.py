@@ -6,7 +6,7 @@ import argparse
 import torch
 from tqdm import tqdm
 from transformers import AutoTokenizer
-from datasets import load_dataset
+from datasets import Dataset, DatasetDict
 
 from utils import load_model
 
@@ -24,12 +24,12 @@ MODELS_8B = [
     {"path": "meta-llama/Llama-3.1-8B-Instruct", "type": "hf", "n_bit": 4},
     {"path": "meta-llama/Llama-3.1-8B-Instruct", "type": "rtn", "n_bit": 4},
     {
-        "path": "../quants/BASE/meta-llama/Llama-3.1-8B-Instruct_awq_4bit_128g",
+        "path": "../../quants/BASE/meta-llama/Llama-3.1-8B-Instruct_awq_4bit_128g",
         "type": "awq",
         "n_bit": 4,
     },
     {
-        "path": "../quants/BASE/meta-llama/Llama-3.1-8B-Instruct_gptq_4bit_128g",
+        "path": "../../quants/BASE/meta-llama/Llama-3.1-8B-Instruct_gptq_4bit_128g",
         "type": "gptq",
         "n_bit": 4,
     },
@@ -40,37 +40,38 @@ MODELS_3B = [
     {"path": "meta-llama/Llama-3.2-3B-Instruct", "type": "hf", "n_bit": 4},
     {"path": "meta-llama/Llama-3.2-3B-Instruct", "type": "rtn", "n_bit": 4},
     {
-        "path": "../quants/BASE/meta-llama/Llama-3.2-3B-Instruct_awq_4bit_128g",
+        "path": "../../quants/BASE/meta-llama/Llama-3.2-3B-Instruct_awq_4bit_128g",
         "type": "awq",
         "n_bit": 4,
     },
     {
-        "path": "../quants/BASE/meta-llama/Llama-3.2-3B-Instruct_gptq_4bit_128g",
+        "path": "../../quants/BASE/meta-llama/Llama-3.2-3B-Instruct_gptq_4bit_128g",
         "type": "gptq",
         "n_bit": 4,
     },
 ]
 
 data_files = {
-    "en": f"../../Eval/floresp-v2.0-rc.3/dev/dev.eng_Latn",
-    "fr": f"../../Eval/floresp-v2.0-rc.3/dev/dev.fra_Latn",
-    "ru": f"../../Eval/floresp-v2.0-rc.3/dev/dev.rus_Cyrl",
-    "uk": f"../../Eval/floresp-v2.0-rc.3/dev/dev.ukr_Cyrl",
-    "es": f"../../Eval/floresp-v2.0-rc.3/dev/dev.spa_Latn",
-    "vi": f"../../Eval/floresp-v2.0-rc.3/dev/dev.vie_Latn",
-    "id": f"../../Eval/floresp-v2.0-rc.3/dev/dev.ind_Latn",
-    "hi": f"../../Eval/floresp-v2.0-rc.3/dev/dev.hin_Deva",
-    "zh": f"../../Eval/floresp-v2.0-rc.3/dev/dev.cmn_Hans",
+    "en": "dev/eng_Latn.parquet",
+    "fr": "dev/fra_Latn.parquet",
+    "ru": "dev/rus_Cyrl.parquet",
+    "es": "dev/spa_Latn.parquet",
+    "uk": "dev/ukr_Cyrl.parquet",
+    "vi": "dev/vie_Latn.parquet",
+    "id": "dev/ind_Latn.parquet",
+    "hi": "dev/hin_Deva.parquet",
+    "zh": "dev/cmn_Hans.parquet",
 }
+
 LANGS = data_files.keys()
 
 # Only used for smaller test runs
-limit = 10000
+limit = 10
 
 device = "cuda"
 res_path = "../eval_results/perplexity/"
 
-RUN_NAME = "base"
+RUN_NAME = "base__"
 
 resume = False
 
@@ -114,15 +115,15 @@ def eval_ppl(model, encodings):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-c", "--category", type=str, default="BASE"
-    )  # either BASE or LN
+    parser.add_argument("-c", "--category", type=str, default="7B")
     parser.add_argument("-n", "--run_name", type=str, default=RUN_NAME)
     parser.add_argument("-r", "--resume", action="store_true")
+    parser.add_argument("-t", "--token", type=str, default="hf_" + "0" * 34)
+
     args = parser.parse_args()
 
     match args.category:
-        case "BASE":
+        case "7B":
             models = MODELS
         case "8B":
             models = MODELS_8B
@@ -149,7 +150,14 @@ if __name__ == "__main__":
         for l in LANGS:
             results[l] = {}
 
-    traindata = load_dataset("text", data_files=data_files)
+    loader = lambda path, code: Dataset.from_parquet(
+        f"hf://datasets/openlanguagedata/flores_plus/{path}",
+        split=code,
+        token=args.token,
+    )
+
+    datasets = {code: loader(path, code) for code, path in data_files.items()}
+    traindata = DatasetDict(datasets)
 
     l = []
 

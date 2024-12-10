@@ -1,0 +1,6 @@
+transformers==4.46.2
+autoawq
+auto-gptq
+bitsandbytes
+sacrebleu
+unbabel-comet

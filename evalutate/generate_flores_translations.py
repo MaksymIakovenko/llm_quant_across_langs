@@ -5,7 +5,7 @@ import argparse
 import torch
 from tqdm import tqdm
 from transformers import AutoTokenizer, pipeline
-from datasets import load_dataset
+from datasets import Dataset, DatasetDict
 import pandas as pd
 
 from utils import load_model
@@ -26,12 +26,12 @@ MODELS_8B = [
     {"path": "meta-llama/Llama-3.1-8B-Instruct", "type": "hf", "n_bit": 4},
     {"path": "meta-llama/Llama-3.1-8B-Instruct", "type": "rtn", "n_bit": 4},
     {
-        "path": "../quants/BASE/meta-llama/Llama-3.1-8B-Instruct_awq_4bit_128g",
+        "path": "../../quants/BASE/meta-llama/Llama-3.1-8B-Instruct_awq_4bit_128g",
         "type": "awq",
         "n_bit": 4,
     },
     {
-        "path": "../quants/BASE/meta-llama/Llama-3.1-8B-Instruct_gptq_4bit_128g",
+        "path": "../../quants/BASE/meta-llama/Llama-3.1-8B-Instruct_gptq_4bit_128g",
         "type": "gptq",
         "n_bit": 4,
     },
@@ -42,28 +42,30 @@ MODELS_3B = [
     {"path": "meta-llama/Llama-3.2-3B-Instruct", "type": "hf", "n_bit": 4},
     {"path": "meta-llama/Llama-3.2-3B-Instruct", "type": "rtn", "n_bit": 4},
     {
-        "path": "../quants/BASE/meta-llama/Llama-3.2-3B-Instruct_awq_4bit_128g",
+        "path": "../../quants/BASE/meta-llama/Llama-3.2-3B-Instruct_awq_4bit_128g",
         "type": "awq",
         "n_bit": 4,
     },
     {
-        "path": "../quants/BASE/meta-llama/Llama-3.2-3B-Instruct_gptq_4bit_128g",
+        "path": "../../quants/BASE/meta-llama/Llama-3.2-3B-Instruct_gptq_4bit_128g",
         "type": "gptq",
         "n_bit": 4,
     },
 ]
 
+
 data_files = {
-    "en": f"../../Eval/floresp-v2.0-rc.3/devtest/devtest.eng_Latn",
-    "fr": f"../../Eval/floresp-v2.0-rc.3/devtest/devtest.fra_Latn",
-    "ru": f"../../Eval/floresp-v2.0-rc.3/devtest/devtest.rus_Cyrl",
-    "es": f"../../Eval/floresp-v2.0-rc.3/devtest/devtest.spa_Latn",
-    "uk": f"../../Eval/floresp-v2.0-rc.3/devtest/devtest.ukr_Cyrl",
-    "vi": f"../../Eval/floresp-v2.0-rc.3/devtest/devtest.vie_Latn",
-    "id": f"../../Eval/floresp-v2.0-rc.3/devtest/devtest.ind_Latn",
-    "hi": f"../../Eval/floresp-v2.0-rc.3/devtest/devtest.hin_Deva",
-    "zh": f"../../Eval/floresp-v2.0-rc.3/devtest/devtest.cmn_Hans",
+    "en": "devtest/eng_Latn.parquet",
+    "fr": "devtest/fra_Latn.parquet",
+    "ru": "devtest/rus_Cyrl.parquet",
+    "es": "devtest/spa_Latn.parquet",
+    "uk": "devtest/ukr_Cyrl.parquet",
+    "vi": "devtest/vie_Latn.parquet",
+    "id": "devtest/ind_Latn.parquet",
+    "hi": "devtest/hin_Deva.parquet",
+    "zh": "devtest/cmn_Hans.parquet",
 }
+
 LANGS = [
     ("fr", "French"),
     ("ru", "Russian"),
@@ -131,15 +133,15 @@ def produce_output(
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-c", "--category", type=str, default="BASE"
-    )  # either BASE or LN
+    parser.add_argument("-c", "--category", type=str, default="7B")
     parser.add_argument("-b", "--batch_size", type=int, default=1)
     parser.add_argument("-n", "--run_name", type=str, default=RUN_NAME)
+    parser.add_argument("-t", "--token", type=str, default="hf_" + "0" * 34)
+
     args = parser.parse_args()
 
     match args.category:
-        case "BASE":
+        case "7B":
             models = MODELS
         case "8B":
             models = MODELS_8B
@@ -152,16 +154,23 @@ if __name__ == "__main__":
     RUN_NAME = args.run_name
 
     tokenizer = AutoTokenizer.from_pretrained(
-        models[0]["path"], padding_side="left"
+        models[0]["path"], padding_side="left", token=args.token
     )  # We always use the same tokenizer anyways
 
     results = {}
 
-    traindata = load_dataset("text", data_files=data_files)
+    loader = lambda path, code: Dataset.from_parquet(
+        f"hf://datasets/openlanguagedata/flores_plus/{path}",
+        split=code,
+        token=args.token,
+    )
+
+    datasets = {code: loader(path, code) for code, path in data_files.items()}
+    traindata = DatasetDict(datasets)
 
     for quant in models:
 
-        llama = load_model(quant)
+        llama = load_model(quant, token=args.token)
 
         pipe = pipeline(
             "text-generation", model=llama, tokenizer=tokenizer, device_map="auto"

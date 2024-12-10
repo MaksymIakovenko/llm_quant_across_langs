@@ -75,7 +75,7 @@ def pseudo_quantize_model_weight(model, w_bit, q_config):
             )
 
 
-def load_model(quant):
+def load_model(quant, token="hf_" + "0" * 34):
     match quant["type"]:
         case "hf":
             if quant["n_bit"] == 4:
@@ -84,21 +84,22 @@ def load_model(quant):
                     device_map="auto",
                     load_in_4bit=True,
                     bnb_4bit_compute_dtype=torch.bfloat16,
+                    token=token,
                 )
             else:
                 llama = AutoModelForCausalLM.from_pretrained(
                     quant["path"],
                     device_map="auto",
                     torch_dtype=torch.bfloat16,
+                    token=token,
                 )
                 # llama.to("cuda", dtype=torch.bfloat16)
         case "rtn":
             llama = AutoModelForCausalLM.from_pretrained(
                 quant["path"],
                 device_map="auto",
+                token=token,
             )
-            # for some reason it defaulted to fp32, which makes no sense
-            # llama.to("cuda", dtype=torch.bfloat16)
             config = {"q_group_size": 128, "inplace": True}
             pseudo_quantize_model_weight(llama, quant["n_bit"], q_config=config)
         case "awq":
@@ -113,8 +114,8 @@ def load_model(quant):
         case _:
             llama = AutoModelForCausalLM.from_pretrained(
                 quant["path"],
-                # device_map="auto",
-                device_map=None,
+                device_map="auto",
+                token=token,
             )
             llama.to("cuda", dtype=torch.bfloat16)
     return llama
