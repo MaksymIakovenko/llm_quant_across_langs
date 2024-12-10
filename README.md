@@ -45,7 +45,7 @@ python3 generate_flores_translations.py -c CATEGORY -b BATCH_SIZE -n RUN_NAME -t
 
 The category parameter refer to the base model used for evaluation, either `7B` for `LLaMA 2 7B Chat`, `8B` for `LLaMA 3.1 8B Instruct` or `3B` for `LLaMA 3.2 3B Instruct`
 
-Considering the updated mode of distribution of the FLORES+ dataset, you'll need to specify a valid huggingface token after agree to the terms on the [FLORES+ Huggingface Hub page](https://huggingface.co/datasets/openlanguagedata/flores_plus)  in order for the dataset to be downloaded.
+Considering the updated mode of distribution of the FLORES+ dataset, you'll need to specify a valid huggingface token after agreeing to the terms on the [FLORES+ Huggingface Hub page](https://huggingface.co/datasets/openlanguagedata/flores_plus)  in order for the dataset to be downloaded.
 
 Once the translations have been generated, they can be evaluated using either BLEU or COMET metric like follows, the results for each model will be stored in an appropriate subfolder of ´./eval_results/flores/´:
 
